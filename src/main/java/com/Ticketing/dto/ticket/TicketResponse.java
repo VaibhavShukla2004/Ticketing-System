@@ -49,6 +49,7 @@ public class TicketResponse {
     public static class AttachmentResponse {
         private Long id;
         private String fileName;
+        private String storedFileName;
         private String contentType;
         private Long fileSize;
         private LocalDateTime uploadedAt;

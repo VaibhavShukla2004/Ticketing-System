@@ -43,10 +43,12 @@ public class Ticket {
     @JoinColumn(name = "assignee_id")
     private User assignee;
 
+    @Builder.Default
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("createdAt ASC")
     private List<Comment> comments = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("uploadedAt ASC")
     private List<Attachment> attachments = new ArrayList<>();

@@ -152,6 +152,15 @@ public class TicketService {
         ticketRepository.delete(ticket);
     }
 
+    @Transactional
+    public void deleteTickets(List<Long> ids, User currentUser) {
+        if (currentUser.getRole() != Role.ADMIN) {
+            throw new AccessDeniedException("Only administrators can perform bulk deletion");
+        }
+        List<Ticket> tickets = ticketRepository.findAllById(ids);
+        ticketRepository.deleteAll(tickets);
+    }
+
     private Ticket findTicketById(Long id) {
         return ticketRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Ticket not found: " + id));
@@ -190,6 +199,7 @@ public class TicketService {
                         .map(a -> TicketResponse.AttachmentResponse.builder()
                                 .id(a.getId())
                                 .fileName(a.getFileName())
+                                .storedFileName(a.getStoredFileName())
                                 .contentType(a.getContentType())
                                 .fileSize(a.getFileSize())
                                 .uploadedAt(a.getUploadedAt())

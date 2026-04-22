@@ -27,8 +27,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
         WHERE (:status IS NULL OR t.status = :status)
           AND (:priority IS NULL OR t.priority = :priority)
           AND (:assigneeId IS NULL OR t.assignee.id = :assigneeId)
-          AND (:search IS NULL OR LOWER(t.subject) LIKE LOWER(CONCAT('%', :search, '%'))
-               OR LOWER(t.description) LIKE LOWER(CONCAT('%', :search, '%')))
+          AND (CAST(:search as string) IS NULL OR LOWER(t.subject) LIKE LOWER(CONCAT('%', CAST(:search as string), '%'))
+               OR LOWER(t.description) LIKE LOWER(CONCAT('%', CAST(:search as string), '%')))
         """)
     Page<Ticket> findAllFiltered(
             @Param("status") TicketStatus status,
@@ -42,7 +42,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
         WHERE t.owner = :owner
           AND (:status IS NULL OR t.status = :status)
           AND (:priority IS NULL OR t.priority = :priority)
-          AND (:search IS NULL OR LOWER(t.subject) LIKE LOWER(CONCAT('%', :search, '%')))
+          AND (CAST(:search as string) IS NULL OR LOWER(t.subject) LIKE LOWER(CONCAT('%', CAST(:search as string), '%')))
         """)
     Page<Ticket> findByOwnerFiltered(
             @Param("owner") User owner,

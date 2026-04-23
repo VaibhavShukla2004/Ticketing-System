@@ -159,20 +159,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Default creds hint */}
-          {isLogin && (
-            <div style={{
-              marginTop: '1.25rem', padding: '0.875rem', background: 'var(--bg-secondary)',
-              borderRadius: 8, border: '1px solid var(--border)', fontSize: '0.8rem', color: '#64748b'
-            }}>
-              <p style={{ fontWeight: 600, color: '#94a3b8', marginBottom: '0.4rem' }}>Demo Credentials:</p>
-              <div style={{ display: 'grid', gap: '0.2rem' }}>
-                <span>🔑 <strong>admin</strong> / admin123 (Admin)</span>
-                <span>🛡️ <strong>agent1</strong> / agent123 (Support Agent)</span>
-                <span>👤 <strong>user1</strong> / user123 (User)</span>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

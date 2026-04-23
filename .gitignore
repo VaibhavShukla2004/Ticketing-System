@@ -44,8 +44,10 @@ uploads/
 # Keep .env.example (template with no real secrets)
 !.env.example
 
-### Docker secrets ###
+### Docker ###
+docker-compose.yml
 docker-compose.override.yml
+Dockerfile.backend
 
 ### Frontend ###
 frontend/node_modules/

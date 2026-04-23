@@ -43,3 +43,7 @@ frontend/out/
 
 ### Env ###
 *.env.local
+
+# Sensitive configuration
+src/main/resources/application.properties
+

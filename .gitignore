@@ -32,18 +32,30 @@ build/
 ### VS Code ###
 .vscode/
 
-### Uploads ###
+### Uploads (local dev) ###
 uploads/
+
+### Sensitive Configuration ###
+# Actual secrets — committed version uses env var placeholders only
+.env
+.env.local
+.env.production
+.env.*.local
+# Keep .env.example (template with no real secrets)
+!.env.example
+
+### Docker secrets ###
+docker-compose.override.yml
 
 ### Frontend ###
 frontend/node_modules/
 frontend/.next/
 frontend/.env.local
+frontend/.env
+frontend/.env.production
 frontend/out/
 
-### Env ###
-*.env.local
-
-# Sensitive configuration
-src/main/resources/application.properties
-
+### Frontend build caches ###
+frontend/.turbo/
+frontend/.swc/
+frontend/tsconfig.tsbuildinfo
